@@ -6,11 +6,15 @@ public class Objetivos : MonoBehaviour
 {
      // Start is called before the first frame update
     private Rigidbody rbObjetivo; //creamos una variable rigidboy
+    private ControlJuego controlJuego;
+    public int valorPuntos;
+
     private float rangoX = 4.0F;
     private float posY = -1.0f;
     private float minVelocidad = 12.0F;
     private float maxVelocidad = 16.0f;
     private float fuerzaTorsion = 10.0f;
+    
 
     void Start()
     {
@@ -21,8 +25,9 @@ public class Objetivos : MonoBehaviour
         rbObjetivo.AddForce(FuerzaImpulso(), ForceMode.Impulse);
         //añadimos fuerza de giro
         rbObjetivo.AddTorque(ValorTorsion(), ValorTorsion(),
-           ValorTorsion(), ForceMode.Impulse);
+        ValorTorsion(), ForceMode.Impulse);
 
+        controlJuego = GameObject.Find("Gestor de Juegos").GetComponent<ControlJuego>();
     }
 
     // Update is called once per frame
@@ -31,11 +36,18 @@ public class Objetivos : MonoBehaviour
         
     }
     private void OnMouseDown(){
-        Destroy(gameObject);
+        if (controlJuego.juegoEstaActivo) { //controlamos que si el juego no está activo, no se actualice el marcador
+
+            Destroy(gameObject);
+            controlJuego.ActualizarMarcador(valorPuntos);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other){
+
     Destroy(gameObject);
+    controlJuego.GameOver();
     }
 
     Vector3 posGeneracion() { 
@@ -48,8 +60,6 @@ public class Objetivos : MonoBehaviour
     }
     float ValorTorsion() {
         return Random.Range(-fuerzaTorsion, fuerzaTorsion);
-
-
     }
 
 }
