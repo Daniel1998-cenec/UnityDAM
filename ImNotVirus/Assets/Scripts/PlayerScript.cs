@@ -20,6 +20,15 @@ public class PlayerScript : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
+        
+        anim.SetFloat("MoveX", moveX);
+        anim.SetFloat("MoveY", moveY);
+
+        if(moveX!=0 || moveY!=0)
+        {
+            anim.SetFloat("LastX",moveX);
+            anim.SetFloat("LastY", moveY);
+        }
 
         Vector2 moveDirection = new Vector2(moveX, moveY).normalized;
         rb.velocity = moveDirection*speed;

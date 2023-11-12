@@ -17,12 +17,17 @@ public class InteractScript : MonoBehaviour
     {
         if (isInRange)
         {
-            if (gameObject.CompareTag("Hide"))
+            /*if (gameObject.CompareTag("Hide"))
             {
                 //Invoke(GameObject.SetGameObjectsActive();
-            }
+            }*/
 
             if (Input.GetKeyDown(interactKey))
+            {
+                interactAction.Invoke();
+            }
+
+            if(interactKey==KeyCode.None)
             {
                 interactAction.Invoke();
             }
@@ -45,4 +50,6 @@ public class InteractScript : MonoBehaviour
             isInRange = false;
         }
     }
+
+    
 }
