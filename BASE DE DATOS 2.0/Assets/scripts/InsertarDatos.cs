@@ -16,7 +16,8 @@ public class InsertarDatos : MonoBehaviour
         Conectar();
 
         // Llama al método para insertar un nuevo registro
-        InsertarNuevoRegistro(3, "Isa", "2225");
+        InsertarNuevoRegistro(3, "pepe", "0001");
+        
     }
 
     void Update()
@@ -62,7 +63,6 @@ public class InsertarDatos : MonoBehaviour
             {
                 // Consulta de inserción
                 string sqlQuery = $"INSERT INTO juego (id, nombre, password) VALUES ({id}, '{nombre}', '{password}')";
-
                 dbcmd.CommandText = sqlQuery;
                 dbcmd.ExecuteNonQuery();
 
