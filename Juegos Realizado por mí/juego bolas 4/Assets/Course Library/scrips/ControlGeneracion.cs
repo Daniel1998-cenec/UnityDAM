@@ -10,6 +10,7 @@ public class ControlGeneracion : MonoBehaviour
     public int numeroEnemigos;
     public int numeroOleada = 1;
     public GameObject prefabPowerUp;
+
     void Start()
     {
 
