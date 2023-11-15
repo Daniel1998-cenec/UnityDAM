@@ -9,12 +9,12 @@ public class ControlGenerador : MonoBehaviour
     private GameObject prefabObstaculo;
     private Vector3 posicionGenerador = new Vector3(25, 0, 0);
     private float tiempoRetraso = 2;
-    private float intervaloRepeticion = 2;
+    private float intervaloRepeticion;
     private ControlJugador scriptControlJugador;
     void Start()
     {
         scriptControlJugador = GameObject.Find("Jugador").GetComponent<ControlJugador>();
-        InvokeRepeating("GenerarObstaculo", tiempoRetraso, intervaloRepeticion);
+        Invoke("GenerarObstaculo", tiempoRetraso);
 
     }
 
@@ -25,11 +25,13 @@ public class ControlGenerador : MonoBehaviour
     }
     void GenerarObstaculo() {
         if (scriptControlJugador.gameOver == false) {
+            intervaloRepeticion = Random.Range(1.5f, 3);
             //esto lo podemos hacer usando !scriptControlJugador.gameOver
             Instantiate(prefabObstaculo, posicionGenerador, prefabObstaculo.transform.rotation);
+            Invoke("GenerarObstaculo", intervaloRepeticion);
         }
 
-       
+
 
     }
 }
