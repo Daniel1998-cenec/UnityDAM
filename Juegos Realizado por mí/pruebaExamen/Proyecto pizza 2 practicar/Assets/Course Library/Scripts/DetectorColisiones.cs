@@ -21,7 +21,7 @@ public class DetectorColisiones : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        controljuego.actualizarMarcador(valorPuntos);
+        //controljuego.actualizarMarcador(valorPuntos);
         Console.WriteLine("ha impactado");
 
     }

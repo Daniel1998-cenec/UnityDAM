@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,13 +26,8 @@ public class ControlJuego : MonoBehaviour
         actualizarMarcador(0);
     }
 
-    // Update is called once per frame
+    // Update is called once per frames
     void Update()
-    {
-        
-    }
-
-    public void GameOver()
     {
         
     }
@@ -44,7 +40,12 @@ public class ControlJuego : MonoBehaviour
 
     public void ReiniciarJuego()
     {
+        UnityEngine.Debug.Log("he tocado el boton");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-        
+
+    public void prueba()
+    {
+       UnityEngine.Debug.Log("he tocado el boton");
+    }
 }
